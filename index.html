@@ -7,13 +7,13 @@
 <style>
 body {
   margin: 0;
-  height: 100vh;
   font-family: 'Segoe UI', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg,#ff758c,#ff7eb3);
   overflow: hidden;
+  height: 100vh;
 }
 
 /* Card */
@@ -135,6 +135,7 @@ button {
 const noBtn = document.getElementById("noBtn");
 const card = document.querySelector(".card");
 
+// Make No button move randomly
 function randomMove(){
   const maxX = card.clientWidth - noBtn.offsetWidth;
   const maxY = card.clientHeight - noBtn.offsetHeight;
@@ -143,7 +144,7 @@ function randomMove(){
 }
 setInterval(randomMove,700);
 
-/* Countdown */
+// Countdown before showing first photo
 function startLove(){
   let count = 5;
   document.body.innerHTML = `
@@ -161,7 +162,7 @@ function startLove(){
   },1000);
 }
 
-/* Fireworks */
+// Fireworks
 function createFireworks(){
   for(let i=0;i<120;i++){
     let firework = document.createElement("div");
@@ -174,11 +175,11 @@ function createFireworks(){
   }
 }
 
-/* Single Photo Page */
+// First photo page
 function showPhoto(){
   document.body.innerHTML = `
   <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#ff512f,#dd2476);color:white;text-align:center;">
-    <h1>  I LOVE YOU JUBI ❤️</h1>
+    <h1>I LOVE YOU JUBI ❤️</h1>
     <div class="beat-heart">💓</div>
     <img src="jubi.jpg" class="love-img">
     <p style="margin-top:20px;">You are my forever💖<br>you are my princess 💖</p>
@@ -190,7 +191,7 @@ function showPhoto(){
   setTimeout(createFireworks,200);
 }
 
-/* Small Thought Page (Forever) */
+// Small thought page
 function nextPage(){
   document.body.innerHTML = `
   <div style="height:100vh;width:100vw;
@@ -210,35 +211,45 @@ function nextPage(){
       I choose you 💖<br>
       You will always be my home 🏡<br>
       Jubi, please don’t avoid me, and don’t leave me 💕.<br>
-I cannot imagine my life without you, and my heart aches at the thought of losing you.<br>
-Please understand the depth of my feelings and my pain,<br>
-because I love you more than words can express.<br>
-Even the smallest things—like moments of distance, little misunderstandings,<br>
-or your busy days and your talks—can hurt me deeply.<br>
-I hope you can see my heart and understand how much I truly love you. ❤️
+      I cannot imagine my life without you, and my heart aches at the thought of losing you.<br>
+      Please understand the depth of my feelings and my pain,<br>
+      because I love you more than words can express.<br>
+      Even the smallest things—like moments of distance, little misunderstandings,<br>
+      or your busy days and your talks—can hurt me deeply.<br>
+      I hope you can see my heart and understand how much I truly love you. ❤️
     </p>
 
     <button onclick="galleryPage()" 
-    style="position:absolute;bottom:40px;
-    padding:15px 30px;
-    font-size:18px;
-    border:none;
-    border-radius:30px;
-    background:#ff4d6d;
-    color:white;
-    cursor:pointer;">
+    style="
+      margin-top:40px;
+      padding:15px 30px;
+      font-size:18px;
+      border:none;
+      border-radius:30px;
+      background:#ff4d6d;
+      color:white;
+      cursor:pointer;">
       💖 Please Click Jubi 💖
     </button>
 
   </div>`;
 }
 
-/* 9 Photos Page with Surprise Text and Button */
+// 9-photo gallery page (mobile-friendly)
 function galleryPage(){
   document.body.innerHTML = `
-  <div class="scrollable" style="background:linear-gradient(135deg,#1d2b64,#f8cdda);color:white;display:flex;flex-direction:column;align-items:center;">
+  <div class="scrollable" style="
+    background:linear-gradient(135deg,#1d2b64,#f8cdda);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-bottom:100px; /* ensures button visible on mobile */
+  ">
     <h1 style="margin-top:20px;">Your Beautiful Memories 💕</h1>
-    <p style="margin-bottom:15px;font-size:18px;text-align:center;">There is another surprise for you 💖<br>Click the button below to continue</p>
+    <p style="margin-bottom:15px;font-size:18px;text-align:center;">
+      There is another surprise for you 💖<br>Click the button below to continue
+    </p>
 
     <div class="gallery">
       <img src="1.jpg.jpeg">
@@ -253,16 +264,24 @@ function galleryPage(){
     </div>
 
     <button onclick="videoPage()" 
-    style="margin-top:20px;padding:15px 30px;font-size:18px;border:none;border-radius:30px;background:#ff4d6d;color:white;cursor:pointer;">
+      style="
+        margin-top:30px;
+        padding:15px 30px;
+        font-size:18px;
+        border:none;
+        border-radius:30px;
+        background:#ff4d6d;
+        color:white;
+        cursor:pointer;">
       💖 Please Click Jubi 💖
     </button>
   </div>`;
 }
 
-/* Video Page with auto Thank You page */
+// Video page with auto Thank You
 function videoPage(){
   document.body.innerHTML = `
-  <div style="height:100vh;width:100vw;background:black;display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;text-align:center;">
+  <div style="height:100vh;width:100vw;display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;text-align:center;">
     <h1>💃 Surprise Jubi 🎥</h1>
 
     <video id="loveVideo" width="320" height="500" controls autoplay style="border-radius:20px;margin-top:20px;">
@@ -273,11 +292,11 @@ function videoPage(){
     <p style="margin-top:20px;">Every moment with you is magical ✨</p>
   </div>`;
 
-  // After 5 seconds, go to Thank You page
+  // After 7 seconds, go to Thank You page
   setTimeout(thankYouPage, 7000);
 }
 
-/* Thank You Page */
+// Thank You page
 function thankYouPage(){
   document.body.innerHTML = `
   <div style="height:100vh;width:100vw;
@@ -288,7 +307,8 @@ function thankYouPage(){
     <h1 style="font-size:50px;">🌸 Thank You Jubi 🌸</h1>
     <p style="font-size:24px;margin-top:20px;">
       I love you so much ❤️<br>
-      You are my forever 💖<br>Iam waiting for you to meet<br> Plz come fast <br>BY 💖
+      You are my forever 💖<br>
+      I am waiting for you to meet<br>Plz come fast 💖<br>BY
     </p>
   </div>`;
 }
